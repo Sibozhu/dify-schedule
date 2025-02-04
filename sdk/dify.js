@@ -451,6 +451,7 @@ export class WorkflowClient extends DifyClient {
         return Promise.reject(res.message)
       }
       const response = res.data
+      console.log(`（工作流内）response 内容：${response}`);
       return {
             text: response?.data?.outputs?.text || '',
             task_id: response?.task_id,
