@@ -97,8 +97,8 @@ export class Notify {
       html: template, // html body
       attachments: [
         {
-          filename: "cp_logo.png",
-          path: 'static/cp_logo.png',
+          filename: "cp_logo.pdf",
+          path: 'static/cp_logo.pdf',
         },
       ],
     });
