@@ -456,14 +456,18 @@ export class WorkflowClient extends DifyClient {
       const response = res.data;
       console.log(`（工作流内）response 内容：${response}`);
       return {
-            text: response?.data?.outputs || '', 
-            task_id: response?.task_id,
-          }
+        // 修正字段路径：直接返回 outputs 而不是 text
+        outputs: response?.outputs || response?.data?.outputs || '', 
+        task_id: response?.task_id,
+      };
     } else {
         console.log('进入Dify工作流，请耐心等待...')
         const result = await asyncSSE(res.data)
         console.log(`（进入工作流后）result 内容：${JSON.stringify(result, null, 2)}`);
-        return result
+        return {
+          outputs: result.text, // 保持兼容性
+          task_id: result.task_id
+        };
     }
   }
 }
