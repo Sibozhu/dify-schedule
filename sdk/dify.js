@@ -434,7 +434,8 @@ export class WorkflowClient extends DifyClient {
                   try {
                     console.log(`（工作流内还没parse的）outputs 内容：${data.outputs}`);
                     outputs = JSON.parse(data.outputs)
-                    console.log(`（工作流内刚parse好的）outputs 内容：${outputs}`);
+                    // 使用 JSON.stringify 打印解析后的对象
+                    console.log(`（工作流内刚parse好的）outputs 内容：${JSON.stringify(outputs, null, 2)}`);
                   } catch (error) {
                     console.log(`获取工作流执行结果,失败:${error}`)
                   }
