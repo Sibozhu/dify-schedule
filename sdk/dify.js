@@ -458,6 +458,7 @@ export class WorkflowClient extends DifyClient {
     } else {
         console.log('进入Dify工作流，请耐心等待...')
         const result = await asyncSSE(res.data)
+        console.log(`（进入工作流后）result 内容：${result}`);
         return result
     }
   }
