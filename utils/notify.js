@@ -29,6 +29,13 @@ export class Notify {
       },
     });
 
+    // 处理内容格式
+    let content = options.content;
+    if (options.msgtype === "text") {
+      // 将文本内容转换为 HTML，保留换行符
+      content = content.replace(/\n/g, '<br>');
+    }
+
     const template = `
 <style>
   .dify-header {
@@ -72,30 +79,25 @@ export class Notify {
       : ""
   }
   <main class="dify-main">
-    ${
-      options.msgtype === "html"
-        ? options.content
-        : `<pre style="margin: 0;">${options.content}</pre>`
-    }
+    ${content}
   </main>
   <footer class="dify-footer">
-    <span>Dify工作流定时助手v${pkg.version}</span> |
-    <span>Copyright © ${new Date().getFullYear()} <a href="https://github.com/leochen-g" target="_blank">Leo_chen</a></span>
+    <span>每日新闻推送${pkg.version}</span> |
+    <span>Copyright © ${new Date().getFullYear()} <a href="https://github.com/Sibozhu" target="_blank">sibozhu</a></span>
   </footer>
 </section>
 `.trim();
 
     await transporter.sendMail({
-      from: `Dify工作流定时助手 <${auth.user}>`, // sender address（'"Fred Foo 👻" <foo@example.com>'）
+      from: `每日新闻推送 <${auth.user}>`, // sender address
       to: env.EMAIL_TO, // list of receivers
       subject: options.title, // Subject line
-      // text, // plain text body
       html: template, // html body
       attachments: [
         {
           filename: "logo.svg",
           path: 'https://cloud.dify.ai/logo/logo-site.png',
-          cid: "logo-site.png", //same cid value as in the html img src
+          cid: "logo-site.png", // same cid value as in the html img src
         },
       ],
     });
