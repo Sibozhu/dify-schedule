@@ -38,11 +38,13 @@ class WorkflowTask extends Task {
       const response =  await workflow.getWorkflowResult(inputs, user,true)
       // 新增：深度解析嵌套 JSON
       try {
-        const rawData = JSON.parse(response.text);
-        if (typeof rawData === 'string') { // 处理双重 JSON 编码
-          this.result = JSON.parse(rawData).outputs || '';
+        const rawData = JSON.parse(response.text); // 第一次解析
+        if (typeof rawData === 'string') {
+          // 如果 rawData 仍然是字符串，再次解析
+          const parsedData = JSON.parse(rawData);
+          this.result = parsedData.outputs || ''; // 提取 outputs 字段
         } else {
-          this.result = rawData.outputs || '';
+          this.result = rawData.outputs || ''; // 提取 outputs 字段
         }
       } catch (error) {
         console.error('解析工作流结果失败:', error);
