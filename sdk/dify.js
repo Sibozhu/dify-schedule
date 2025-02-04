@@ -432,7 +432,13 @@ export class WorkflowClient extends DifyClient {
               let outputs = {}
               if(data.outputs) {
                   try {
-                    outputs = JSON.parse(data.outputs)
+                    // 转换 Unicode 编码为可读的中文
+                      const decodedOutputs = JSON.parse(`"${data.outputs.replace(/\\u([0-9a-fA-F]{4})/g, (match, p1) => {
+                        return String.fromCharCode(parseInt(p1, 16));
+                    })}"`);
+                    outputs = JSON.parse(decodedOutputs);
+                    // outputs = JSON.parse(data.outputs)
+                    
                   } catch (error) {
                     console.log(`获取工作流执行结果,失败:${error}`)
                   }
