@@ -35,6 +35,7 @@ export class Notify {
       // 将文本内容转换为 HTML，保留换行符
       content = content.replace(/\n/g, '<br>');
     }
+    console.log(`email 内容：${content}`);
 
     const template = `
 <style>
