@@ -38,26 +38,12 @@ class WorkflowTask extends Task {
       const response =  await workflow.getWorkflowResult(inputs, user,true)
 
       try {
-        console.log('工作流返回的原始响应:', response); // 调试日志
-        // 直接提取 outputs 字段
-        let outputs = response.outputs;
+        console.log('工作流返回的原始响应:', response);
+        // 直接提取 outputs 字段（无需二次解析）
+        this.result = response.outputs || '工作流返回的内容为空';
 
-        // 处理嵌套 JSON 字符串
-        if (typeof outputs === 'string') {
-          try {
-            outputs = JSON.parse(outputs);
-          } catch (error) {
-            console.log('outputs 是普通字符串，无需解析');
-          }
-        }
-
-        // 最终内容处理
-        if (typeof outputs === 'object' && outputs !== null) {
-          // 如果 outputs 是对象，直接提取内容（根据 Dify 工作流实际返回的字段名）
-          this.result = outputs.text || outputs.content || outputs.outputs || JSON.stringify(outputs);
-        } else {
-          this.result = outputs || '工作流返回的内容为空';
-        }
+        // 增加调试日志
+        console.log('（最终提取的原始内容）', this.result);
       } catch (error) {
         console.error('解析工作流结果失败:', error);
         this.result = '内容解析错误，请检查日志';

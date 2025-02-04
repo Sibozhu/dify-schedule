@@ -441,7 +441,10 @@ export class WorkflowClient extends DifyClient {
                   }
               }
 
-              resolve({ text: outputs?.text, task_id: task_id })
+              resolve({ 
+                outputs: outputs?.outputs || outputs, // 直接返回 outputs 字段
+                task_id: task_id 
+              });
             })
           } catch (e) {
             resolve({ text: `Dify工作流执行出错，${e}`, task_id: '' })
@@ -465,7 +468,7 @@ export class WorkflowClient extends DifyClient {
         const result = await asyncSSE(res.data)
         console.log(`（进入工作流后）result 内容：`, result);
         return {
-          outputs: result.outputs || result.text, // 兼容流式模式
+          outputs: result.outputs, // 直接返回 outputs 字段
           task_id: result.task_id
         };
     }
