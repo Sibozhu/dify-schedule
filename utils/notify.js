@@ -281,6 +281,12 @@ export class Notify {
   }
 
   async pushMessage(options) {
+    // 在发送前添加内容验证
+    if (!options.content) {
+      console.error('推送内容为空，取消发送');
+      return;
+    }
+    
     const trycatch = async (name, fn) => {
       try {
         await fn(options);

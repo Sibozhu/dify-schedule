@@ -36,7 +36,18 @@ class WorkflowTask extends Task {
       this.workfolwName = info.data?.name || '';
       console.log(`Dify工作流【${info.data.name}】开始执行...`)
       const response =  await workflow.getWorkflowResult(inputs, user,true)
-      this.result = response.text || ''
+      // 新增：深度解析嵌套 JSON
+      try {
+        const rawData = JSON.parse(response.text);
+        if (typeof rawData === 'string') { // 处理双重 JSON 编码
+          this.result = JSON.parse(rawData).outputs || '';
+        } else {
+          this.result = rawData.outputs || '';
+        }
+      } catch (error) {
+        console.error('解析工作流结果失败:', error);
+        this.result = '内容解析错误，请检查日志';
+      }
     }
 
     toString() {

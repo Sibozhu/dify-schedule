@@ -453,10 +453,10 @@ export class WorkflowClient extends DifyClient {
         console.log('Dify 工作流执行失败', res.data.code, res.data.message)
         return Promise.reject(res.message)
       }
-      const response = res.data
+      const response = res.data;
       console.log(`（工作流内）response 内容：${response}`);
       return {
-            text: response?.data?.outputs?.text || '',
+            text: response?.data?.outputs || '', 
             task_id: response?.task_id,
           }
     } else {
