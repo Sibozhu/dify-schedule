@@ -75,21 +75,21 @@ export class Notify {
   </header>
   ${
     this.newVersion.has
-      ? `<a class="dify-update-tip" href="${this.newVersion.url}" target="_blank"><span>Dify工作流定时助手 ${this.newVersion.name} 现在可用 ›</span></a>`
+      ? `<a class="dify-update-tip" href="${this.newVersion.url}" target="_blank"><span>每日具身文娱新闻推送 ${this.newVersion.name} 现在可用 ›</span></a>`
       : ""
   }
   <main class="dify-main">
     ${content}
   </main>
   <footer class="dify-footer">
-    <span>每日新闻推送${pkg.version}</span> |
+    <span>每日具身文娱新闻推送${pkg.version}</span> |
     <span>Copyright © ${new Date().getFullYear()} <a href="https://github.com/Sibozhu" target="_blank">sibozhu</a></span>
   </footer>
 </section>
 `.trim();
 
     await transporter.sendMail({
-      from: `每日新闻推送 <${auth.user}>`, // sender address
+      from: `魂伴新闻推送助手 <${auth.user}>`, // sender address
       to: env.EMAIL_TO, // list of receivers
       subject: options.title, // Subject line
       html: template, // html body
@@ -290,7 +290,7 @@ export class Notify {
 
     await this.checkupdate();
     if (this.newVersion.has) {
-      console.log(`Dify工作流定时助手 ${this.newVersion.name} 现在可用`);
+      console.log(`每日具身文娱新闻推送 ${this.newVersion.name} 现在可用`);
     }
 
     await trycatch("邮件", this.email.bind(this));
