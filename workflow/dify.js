@@ -36,7 +36,7 @@ class WorkflowTask extends Task {
       this.workfolwName = info.data?.name || '';
       console.log(`Dify工作流【${info.data.name}】开始执行...`)
       const response =  await workflow.getWorkflowResult(inputs, user,true)
-      
+
       try {
         console.log('工作流返回的原始响应:', response); // 调试日志
         // 直接提取 outputs 字段

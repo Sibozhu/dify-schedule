@@ -463,9 +463,9 @@ export class WorkflowClient extends DifyClient {
     } else {
         console.log('进入Dify工作流，请耐心等待...')
         const result = await asyncSSE(res.data)
-        console.log(`（进入工作流后）result 内容：${JSON.stringify(result, null, 2)}`);
+        console.log(`（进入工作流后）result 内容：`, result);
         return {
-          outputs: result.text, // 保持兼容性
+          outputs: result.outputs || result.text, // 兼容流式模式
           task_id: result.task_id
         };
     }
