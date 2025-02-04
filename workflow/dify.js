@@ -61,7 +61,7 @@ async function run(args) {
 
     const message = messageList.join(`\n${"-".repeat(15)}\n`);
     Notify.pushMessage({
-      title: "Dify工作流定时助手",
+      title: "每日具身文娱新闻推送",
       content: message,
       msgtype: "text"
     });
