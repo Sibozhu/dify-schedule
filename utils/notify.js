@@ -97,9 +97,8 @@ export class Notify {
       html: template, // html body
       attachments: [
         {
-          filename: "logo.svg",
-          path: 'https://cloud.dify.ai/logo/logo-site.png',
-          cid: "logo-site.png", // same cid value as in the html img src
+          filename: "cp_logo.png",
+          path: 'static/cp_logo.png',
         },
       ],
     });
@@ -286,7 +285,7 @@ export class Notify {
       console.error('推送内容为空，取消发送');
       return;
     }
-    
+
     const trycatch = async (name, fn) => {
       try {
         await fn(options);
