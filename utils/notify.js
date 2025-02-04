@@ -31,11 +31,12 @@ export class Notify {
 
     // 处理内容格式
     let content = options.content;
+    console.log(`（转换前）email 内容：${content}`);
     if (options.msgtype === "text") {
       // 将文本内容转换为 HTML，保留换行符
       content = content.replace(/\n/g, '<br>');
     }
-    console.log(`email 内容：${content}`);
+    console.log(`（转换后）email 内容：${content}`);
 
     const template = `
 <style>
