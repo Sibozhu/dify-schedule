@@ -46,7 +46,7 @@ export class Notify {
     text-align: center;
   }
   .dify-header img {
-    width: 120px;      /* 固定显示宽度 */
+    width: 480px;      /* 固定显示宽度 */
     height: auto;      /* 高度自适应 */
     object-fit: contain;
     vertical-align: middle;
