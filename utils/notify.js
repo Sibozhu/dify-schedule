@@ -95,6 +95,9 @@ export class Notify {
       to: env.EMAIL_TO, // list of receivers
       subject: options.title, // Subject line
       html: template, // html body
+      headers: {
+        "Content-Type": "text/html; charset=UTF-8"  // 确保邮件头的Content-Type为html
+      },
       attachments: [
         {
           filename: "cp_logo_textonly.png",
