@@ -46,8 +46,8 @@ export class Notify {
     text-align: center;
   }
   .dify-header img {
-    width: auto;
-    height: 40px;
+    width: 120px;      /* 固定显示宽度 */
+    height: auto;      /* 高度自适应 */
     object-fit: contain;
     vertical-align: middle;
   }
@@ -73,7 +73,7 @@ export class Notify {
 </style>
 <section>
   <header class="dify-header">
-    <img src="cid:logo-site.png" width="120" height="24" alt="dify" />
+    <img src="cid:cp-logo" width="120" alt="Company Logo" /> <!-- 修改 cid 和 alt -->
   </header>
   ${
     this.newVersion.has
@@ -97,8 +97,9 @@ export class Notify {
       html: template, // html body
       attachments: [
         {
-          filename: "cp_logo.pdf",
-          path: 'static/cp_logo.pdf',
+          filename: "cp_logo_textonly.png",
+          path: 'static/cp_logo_textonly.png',  // 本地图片路径
+          cid: 'cp-logo'  // 必须与模板中的 cid 一致
         },
       ],
     });
