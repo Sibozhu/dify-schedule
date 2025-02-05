@@ -77,14 +77,14 @@ export class Notify {
   </header>
   ${
     this.newVersion.has
-      ? `<a class="dify-update-tip" href="${this.newVersion.url}" target="_blank"><span>每日具身文娱新闻推送 ${this.newVersion.name} 现在可用 ›</span></a>`
+      ? `<a class="dify-update-tip" href="${this.newVersion.url}" target="_blank"><span>魂伴每日新闻推送 ${this.newVersion.name} 现在可用 ›</span></a>`
       : ""
   }
   <main class="dify-main">
     ${content}
   </main>
   <footer class="dify-footer">
-    <span>每日具身文娱新闻推送${pkg.version}</span> |
+    <span>魂伴每日新闻推送${pkg.version}</span> |
     <span>Copyright © ${new Date().getFullYear()} <a href="https://github.com/Sibozhu" target="_blank">sibozhu</a></span>
   </footer>
 </section>
@@ -96,7 +96,7 @@ export class Notify {
       subject: options.title, // Subject line
       html: template, // html body
       headers: {
-        "Content-Type": "text/html; charset=UTF-8"  // 确保邮件头的Content-Type为html
+        "Content-Type": "text/html; charset=UTF-8"  // 明确指定为HTML内容
       },
       attachments: [
         {
@@ -301,7 +301,7 @@ export class Notify {
 
     await this.checkupdate();
     if (this.newVersion.has) {
-      console.log(`每日具身文娱新闻推送 ${this.newVersion.name} 现在可用`);
+      console.log(`魂伴每日新闻推送 ${this.newVersion.name} 现在可用`);
     }
 
     await trycatch("邮件", this.email.bind(this));
