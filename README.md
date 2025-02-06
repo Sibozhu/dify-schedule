@@ -94,10 +94,6 @@ If you have a private Dify deployment, ensure it's accessible via public network
  
 You can submit any ideas as [Pull Requests](https://github.com/leochen-g/dify-schedule/pulls) or [GitHub Issues](https://github.com/leochen-g/dify-schedule/issues).
 
-## Support
-### ☕️WeChat Support!
-<img src="./static/zan.jpg" alt="WeChat Support" width="300" />
-
 ## License
 
 [MIT](./LICENSE)

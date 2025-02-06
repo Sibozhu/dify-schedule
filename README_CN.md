@@ -92,10 +92,6 @@ ql repo https://github.com/leochen-g/dify-schedule.git "ql_" "utils" "sdk"
  
 您可以将任何想法作为 [拉取请求](https://github.com/leochen-g/dify-schedule/pulls) 或 [GitHub问题](https://github.com/leochen-g/dify-schedule/issues) 提交。
 
-## 赞赏
-### ☕️微信赞赏！
-<img src="./static/zan.jpg" alt="微信赞赏" width="300" />
-
 ## 许可
 
 [MIT](./LICENSE)

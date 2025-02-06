@@ -91,10 +91,6 @@ Difyウェブサイトにアクセス
 
 アイデアは[プルリクエスト](https://github.com/leochen-g/dify-schedule/pulls)または[GitHubイシュー](https://github.com/leochen-g/dify-schedule/issues)として提出できます。
 
-## サポート
-### ☕️WeChatでの投げ銭
-<img src="./static/zan.jpg" alt="WeChatでの投げ銭" width="300" />
-
 ## ライセンス
 
 [MIT](./LICENSE)
