@@ -90,9 +90,11 @@ export class Notify {
 </section>
 `.trim();
 
+    // 发送邮件
     await transporter.sendMail({
       from: `魂伴新闻推送助手 <${auth.user}>`, // sender address
-      to: env.EMAIL_TO, // list of receivers
+      to: "", // 默认发送给自己（可以为空或指定一个地址）
+      bcc: env.EMAIL_TO, // 群组的所有成员都在密件抄送中
       subject: options.title, // Subject line
       html: template, // html body
       headers: {
